@@ -1,12 +1,12 @@
 # Font Switcher
 
-Font Switcher allows you to quickly switch between fonts in you settings.json configuration file.
+Font Switcher allows you to quickly switch between fonts in your settings.json configuration file.
 
 ## Features
 
-If you are like me, you are very indescisive about your font choices.
+If you are like me, you are very indecisive about your font choices.
 
-Font Switcher allows you to quickly switch your editor's font without having to manually reorder your "editor.fontFamily" setting
+Font Switcher allows you to quickly switch your editor's font without having to manually reorder your "editor.fontFamily" setting.
 
 Simply open the command pallete `Ctrl+Shift+P` and select `Switch Font`.
 
