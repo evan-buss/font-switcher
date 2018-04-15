@@ -1,4 +1,4 @@
-# font-switcher README
+# Font Switcher
 
 Font Switcher allows you to quickly switch between fonts in you settings.json configuration file.
 
