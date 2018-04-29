@@ -30,6 +30,10 @@ This extension contributes the following settings:
 
 Users can change their editor font through the command pallete.
 
+### 1.0.2
+
+Fixed bug that would delete a font option if the menu was cancelled.
+
 ### 1.0.0
 
 Initial release of Font Switcher
