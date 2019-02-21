@@ -2,7 +2,7 @@
     "name": "font-switcher",
     "displayName": "Font Switcher",
     "description": "Quickly change your font from the command pallete.",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "publisher": "evan-buss",
     "engines": {
         "vscode": "^1.22.0"
