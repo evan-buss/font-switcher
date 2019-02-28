@@ -30,6 +30,10 @@ This extension contributes the following settings:
 
 Users can change their editor font through the command pallete.
 
+### 1.0.3
+
+Added preview using up/down keys (similar to the "Select Theme" behavior)
+
 ### 1.0.2
 
 Fixed bug that would delete a font option if the menu was cancelled.
