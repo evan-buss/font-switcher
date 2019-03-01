@@ -1,36 +1,71 @@
-'use strict';
-import * as vscode from 'vscode';
+"use strict";
+import * as vscode from "vscode";
 
 export function activate(context: vscode.ExtensionContext) {
-    console.log('Congratulations, your extension "font-switcher" is now active!');
+  console.log('Congratulations, your extension "font-switcher" is now active!');
 
-    let disposable = vscode.commands.registerCommand('extension.switchFont', () => {
-        let globalConfig = vscode.workspace.getConfiguration();
-        let fontString = globalConfig.editor.fontFamily;
+  let disposable = vscode.commands.registerCommand(
+    "extension.switchFont",
+    () => {
+      let fontSwitcherConfig = vscode.workspace.getConfiguration(
+        "font-switcher"
+      );
+      let editorConfig = vscode.workspace.getConfiguration("editor");
 
-        fontString = fontString.replace(/\s*,\s*/g, ',');
-        const fontArray = fontString.split(',');
-        const currentFont = fontArray[0];
+      //   Determine what setting the user wants to use
+      //   By default, the fontString is received from the editor.fontFamily
+      //   User has to manually set the font-switcher.enableLivePreview to true
+      let fontString: String;
+      if (fontSwitcherConfig.enableLivePreview) {
+        fontString = fontSwitcherConfig.fontFamily; // get custom setting string
+        let fontArray = parseFontString(fontString); // convert to array
 
-        vscode.window.showQuickPick(fontArray, {
-            placeHolder: 'Select Editor Font (Up/Down Keys for Preview)',
-            onDidSelectItem: (selection) => applyFont(selection, fontArray, globalConfig)
-        }).then((selection) => {
-            applyFont(selection || currentFont, fontArray, globalConfig);
-        });
-    });
+        // Show the picker and display the currently selected font
+        vscode.window
+          .showQuickPick(fontArray, {
+            placeHolder: "Select Editor Font (Up/Down Keys for Preview)",
+            onDidSelectItem: selection => applyFont(selection)
+          })
+          .then(selection => {
+            applyFont(selection);
+          });
+      } else {
+        //   User wishes to use the existing switcher
+        fontString = editorConfig.fontFamily;
+        let fontArray = parseFontString(fontString);
+        console.log(fontArray);
 
-    context.subscriptions.push(disposable);
+        // Show the picker but don't update on selection.
+        vscode.window
+          .showQuickPick(fontArray, {
+            placeHolder: "Select Editor Font"
+          })
+          .then(selection => {
+            if (selection) {
+              var index = fontArray.indexOf(selection);
+              fontArray.splice(index, 1);
+              fontArray.splice(0, 0, selection);
+              fontString = fontArray.join(", ");
+              editorConfig.update("fontFamily", fontString, true);
+            }
+          });
+      }
+    }
+  );
+
+  context.subscriptions.push(disposable);
+}
+//   Parse a font string into an array
+function parseFontString(fontString: String): Array<string> {
+  fontString = fontString.replace(/\s*,\s*/g, ",");
+  return fontString.split(",");
 }
 
-export function deactivate() {
+// Set the editor.fontFamily string to the current selection
+function applyFont(selection: any) {
+  vscode.workspace
+    .getConfiguration("editor")
+    .update("fontFamily", selection, true);
 }
 
-function applyFont(selection, fontArray, globalConfig) {
-    const index = fontArray.indexOf(selection);
-    fontArray.splice(index, 1);
-    fontArray.splice(0, 0, selection);
-
-    const fontString = fontArray.join(', ');
-    globalConfig.update('editor.fontFamily', fontString, true);
-}
+export function deactivate() {}
