@@ -8,27 +8,52 @@ If you are like me, you are very indecisive about your font choices.
 
 Font Switcher allows you to quickly switch your editor's font without having to manually reorder your "editor.fontFamily" setting.
 
-Simply open the command pallete `Ctrl+Shift+P` and select `Switch Font`.
+## Usage
 
-To get started, make sure you have a few different fonts defined in your `settings.json` file under `editor.fontFamily`
+### **\*New\* Live Preview Font Switcher**
 
-For Example:
+Enable the live preview setting in `settings.json`
+
+Set the `font-switcher.fontFamily` settings to your desired fonts.
+
+![font settings](https://i.imgur.com/Sn93UKk.png)
+
+![live preview menu in action](https://i.imgur.com/ilB6LYv.gif)
+
+### Static Font Switcher
+
+This is the default setting because the live preview menu breaks existing functionality.
+
+Make sure you have a few different fonts defined in your `settings.json` file under `editor.fontFamily`
 
 ![font settings](https://i.imgur.com/3nZpkup.png)
 
-You would have this menu:
+Simply open the command pallete `Ctrl+Shift+P` and select `Switch Font`.
 
-![menu in action](https://i.imgur.com/nhxH2uH.gif)
+![static menu in action](https://i.imgur.com/nhxH2uH.gif)
 
 ## Extension Settings
 
 This extension contributes the following settings:
 
-* `extension.switchFont`:Show a quickPick menu of the user defined font families.
+- `font-switcher.enableLivePreview`: Enable the new live preview menu functionality.
+- `font-switcher.fontFamily`: Font string that holds your font options. This setting's value is only used when `font-switcher.enableLivePreview` is set to `true`.
+
+## Extension Commands
+
+This extension contributes the following commands:
+
+- `extension.switchFont`: Show a quickPick menu of the user defined font families.
 
 ## Release Notes
 
-Users can change their editor font through the command pallete.
+### 2.0
+
+Added live preview functionality. User has to explicity enable this new setting.
+
+### 1.0.3
+
+Added preview using up/down keys (similar to the "Select Theme" behavior)
 
 ### 1.0.2
 
@@ -37,4 +62,3 @@ Fixed bug that would delete a font option if the menu was cancelled.
 ### 1.0.0
 
 Initial release of Font Switcher
-
