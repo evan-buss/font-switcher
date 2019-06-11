@@ -33,7 +33,6 @@ export function activate(context: vscode.ExtensionContext) {
         //   User wishes to use the existing switcher
         fontString = editorConfig.fontFamily;
         let fontArray = parseFontString(fontString);
-        console.log(fontArray);
 
         // Show the picker but don't update on selection.
         vscode.window
@@ -68,4 +67,4 @@ function applyFont(selection: any) {
     .update("fontFamily", selection, true);
 }
 
-export function deactivate() {}
+export function deactivate() { }

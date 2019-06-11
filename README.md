@@ -47,6 +47,10 @@ This extension contributes the following commands:
 
 ## Release Notes
 
+### 2.1
+
+Updated extension icon!
+
 ### 2.0
 
 Added live preview functionality. User has to explicity enable this new setting.
