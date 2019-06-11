@@ -47,6 +47,10 @@ This extension contributes the following commands:
 
 ## Release Notes
 
+### 2.2
+
+Fix icon resolution.
+
 ### 2.1
 
 Updated extension icon!
