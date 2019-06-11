@@ -47,11 +47,11 @@ This extension contributes the following commands:
 
 ## Release Notes
 
-### 2.2
+### 3.1
 
 Fix icon resolution.
 
-### 2.1
+### 3.0
 
 Updated extension icon!
 
