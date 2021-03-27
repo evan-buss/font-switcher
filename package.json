@@ -22,7 +22,10 @@
   },
   "icon": "icon.png",
   "activationEvents": [
-    "onCommand:extension.switchFont"
+    "onCommand:extension.switchFont",
+    "onCommand:extension.setFontSize",
+    "onCommand:extension.switchTerminalFont",
+    "onCommand:extension.setTerminalFontSize"
   ],
   "main": "./out/extension",
   "contributes": {
@@ -30,6 +33,18 @@
       {
         "command": "extension.switchFont",
         "title": "Switch Font"
+      },
+      {
+        "command": "extension.setFontSize",
+        "title": "Font Size"
+      },
+      {
+        "command": "extension.switchTerminalFont",
+        "title": "Switch Terminal Font"
+      },
+      {
+        "command": "extension.setTerminalFontSize",
+        "title": "Terminal Font Size"
       }
     ],
     "configuration": {
@@ -40,11 +55,6 @@
           "type": "boolean",
           "default": false,
           "description": "Enable Font Switcher live preview when selecting font."
-        },
-        "font-switcher.fontFamily": {
-          "type": "string",
-          "default": "Consolas, DejaVu Sans Mono, monospace",
-          "description": "Font Switcher live preview font families.\nOverwrites the 'editor.fontFamily' setting only if 'font-switcher.enableLivePreview' is set to true"
         }
       }
     }
@@ -53,13 +63,13 @@
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "postinstall": "node ./node_modules/vscode/bin/install",
     "test": "npm run compile && node ./node_modules/vscode/bin/test"
   },
   "devDependencies": {
     "@types/mocha": "^2.2.42",
     "@types/node": "^7.10.6",
     "typescript": "^2.9.2",
-    "vscode": "^1.1.34"
+    "@types/vscode": "^1.1.34",
+    "glob": "^7.1.4"
   }
 }

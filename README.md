@@ -44,6 +44,7 @@ This extension contributes the following settings:
 This extension contributes the following commands:
 
 - `extension.switchFont`: Show a quickPick menu of the user defined font families.
+- `extension.setFontSize`: Show an input dialog for setting the font size
 
 ## Release Notes
 
