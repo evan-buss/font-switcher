@@ -32,7 +32,7 @@ Set the `editor.fontFamily` to your desired fonts.
 
 This is the default setting because the live preview menu breaks existing functionality.
 
-Make sure you have a few different fonts defined in your `settings.json` file under `editor.fontFamily`
+Make sure you have a few different fonts defined in your `settings.json` file under `editor.fontFamily` and `terminal.integrated.fontFamily`
 
 ![font settings](https://i.imgur.com/3nZpkup.png)
 
@@ -50,10 +50,16 @@ This extension contributes the following settings:
 
 This extension contributes the following commands:
 
-- `extension.switchFont`: Show a quickPick menu of the user defined font families.
+- `extension.switchFont`: Show a quickPick menu of the user defined editor font families.
 - `extension.setFontSize`: Show an input dialog for setting the font size
+- `extension.switchTerminalFont`: Show a quickPick menu of the user defined integrated terminal font families
+- `exxtension.setTerminalFontSize`: Show an input dialog for setting the terminal font size
 
 ## Release Notes
+
+### 4.0
+
+Add settings for setting font size and setting terminal font 
 
 ### 3.1
 
