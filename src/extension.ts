@@ -37,7 +37,7 @@ async function selectFontSize(target: Target): Promise<void> {
     const value = await vscode.window.showInputBox({
         prompt: `Enter ${target} Font Size`,
         value: currentFontSize ? currentFontSize.toString() : ""
-    })
+    });
 
     if (value) {
         applyFontSize(target, Number.parseInt(value));
@@ -54,7 +54,7 @@ async function selectFont(target: Target): Promise<void> {
     // User has to manually set the font-switcher.enableLivePreview to true
     const oldFontString = targetConfig.fontFamily;
     const oldFontArray = parseFontString(oldFontString);
-    let selection = "";
+    let selection: string | undefined;
 
     if (fontSwitcherConfig.enableLivePreview) {
         // Show the picker and display the currently selected font
