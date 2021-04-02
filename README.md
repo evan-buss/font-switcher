@@ -14,11 +14,12 @@ Make sure you have a few different fonts defined in your `settings.json` file un
 
 ![font settings](https://github.com/evan-buss/font-switcher/blob/master/screenshots/EditorFontFamily.png)
 
-### Switch Editor Font Family
+### Switch Font Family
+#### Switch Editor Font Family
 
 <img src="https://github.com/evan-buss/font-switcher/blob/master/screenshots/ChangeEditorFont.gif?raw=true" alt="live preview menu in action for editor font" width="800">
 
-### Switch Integrated Terminal Font Family
+#### Switch Integrated Terminal Font Family
 
 <img src="https://github.com/evan-buss/font-switcher/blob/master/screenshots/ChangeTerminalFont.gif?raw=true" alt="live preview menu in action for terminal font" width="800">
 
