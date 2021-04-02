@@ -53,7 +53,7 @@
       "properties": {
         "font-switcher.enableLivePreview": {
           "type": "boolean",
-          "default": false,
+          "default": true,
           "description": "Enable Font Switcher live preview when selecting font."
         }
       }

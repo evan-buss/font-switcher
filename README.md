@@ -71,7 +71,7 @@ Updated extension icon!
 
 ### 2.0
 
-Added live preview functionality. User has to explicity enable this new setting.
+Added live preview functionality. User has to explicitly enable this new setting.
 
 ### 1.0.3
 

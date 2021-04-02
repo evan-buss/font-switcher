@@ -1,103 +1,97 @@
 "use strict";
 import * as vscode from "vscode";
 
-//  Get vscode config
-function getConfig(isEditor: boolean)
-{
-    if (isEditor)
+type Target = "Editor" | "Terminal";
+
+// Get vscode config
+function getConfig(target: Target): vscode.WorkspaceConfiguration {
+    if (target === "Editor") {
         return vscode.workspace.getConfiguration("editor");
+    }
     return vscode.workspace.getConfiguration("terminal.integrated");
 }
 
-//  Apply Font Size
-function applyFontSize(applyToEditor: boolean, fontSize: number)
-{
-    if (isNaN(fontSize))
+// Apply Font Size
+function applyFontSize(target: Target, fontSize: number): void {
+    if (isNaN(fontSize)) {
         vscode.window.showErrorMessage("Invalid font size!");
-    else
-        getConfig(applyToEditor).update("fontSize", fontSize, true);
+    } else {
+        getConfig(target).update("fontSize", fontSize, true);
+    }
 }
 
-//   Parse a font string into an array
-function parseFontString(fontString: String): Array<string>
-{
+// Parse a font string into an array
+function parseFontString(fontString: String): string[] {
     fontString = fontString.replace(/\s*,\s*/g, ",");
     return fontString.split(",");
 }
 
-//  Set the editor or terminal fontFamily string to the current selection
-function applyFontFamily(selection: any, applyToEditor = false) 
-{
-    getConfig(applyToEditor).update("fontFamily", selection, true);
+// Set the editor or terminal fontFamily string to the current selection
+function applyFontFamily(target: Target, selection: any): void {
+    getConfig(target).update("fontFamily", selection, true);
 }
 
-//  Show an input box for font size
-function selectFontSize(applyToEditor: boolean)
-{
-    const currentFontSize = getConfig(applyToEditor).get<number>("fontSize");
-    const target = applyToEditor ? "Editor" : "Terminal";
-    vscode.window.showInputBox({
+// Show an input box for font size
+async function selectFontSize(target: Target): Promise<void> {
+    const currentFontSize = getConfig(target).get<number>("fontSize");
+    const value = await vscode.window.showInputBox({
         prompt: `Enter ${target} Font Size`,
         value: currentFontSize ? currentFontSize.toString() : ""
-    }).then(value =>
-    {
-        if (value)
-            applyFontSize(applyToEditor, Number.parseInt(value));
-    });
+    })
+
+    if (value) {
+        applyFontSize(target, Number.parseInt(value));
+    }
 }
 
-//  Show a quick pick menu for selecting font
-async function selectFont(applyToEditor: boolean)
-{
+// Show a quick pick menu for selecting font
+async function selectFont(target: Target): Promise<void> {
     const fontSwitcherConfig = vscode.workspace.getConfiguration("font-switcher");
-    const targetConfig = getConfig(applyToEditor);  
-    const target = applyToEditor ? "Editor" : "Terminal";
-
-    //   Determine what setting the user wants to use
-    //   By default, the fontString is received from the editor.fontFamily
-    //   User has to manually set the font-switcher.enableLivePreview to true
+    const targetConfig = getConfig(target);
+    
+    // Determine what setting the user wants to use
+    // By default, the fontString is received from the editor.fontFamily
+    // User has to manually set the font-switcher.enableLivePreview to true
     const oldFontString = targetConfig.fontFamily;
     const oldFontArray = parseFontString(oldFontString);
-    let selectionString = "";
+    let selection = "";
 
-    if (fontSwitcherConfig.enableLivePreview)
-    {
+    if (fontSwitcherConfig.enableLivePreview) {
         // Show the picker and display the currently selected font
-        await vscode.window.showQuickPick(oldFontArray, {
+        selection = await vscode.window.showQuickPick(oldFontArray, {
             placeHolder: `Select ${target} Font (Up/Down Keys for Preview)`,
-            onDidSelectItem: selection => applyFontFamily(selection, applyToEditor)
-        }).then(selection => selectionString = selection? selection : "");
-    }
-    else
-    {
+            onDidSelectItem: selection => applyFontFamily(target, selection)
+        });
+    } else {
         // Show the picker but don't update on selection.
-        await vscode.window.showQuickPick(oldFontArray, {
+        selection = await vscode.window.showQuickPick(oldFontArray, {
             placeHolder: `Select ${target} Font`
-        }).then(selection => selectionString = selection? selection : "");
+        });
     }
 
-    const index = oldFontArray.indexOf(selectionString);
-    if (index !== -1)
-    {
+    if (!selection) {
+        selection = "";
+    }
+
+    const index = oldFontArray.indexOf(selection);
+    if (index !== -1) {
         oldFontArray.splice(index, 1);
-        oldFontArray.splice(0, 0, selectionString);
+        oldFontArray.splice(0, 0, selection);
         const newFontString = oldFontArray.join(", ");
         targetConfig.update("fontFamily", newFontString, true);
-    }
-    else //user cancelled, so apply the original settings
+    } else {
+        // User cancelled, so apply the original settings
         targetConfig.update("fontFamily", oldFontString, true);
+    }
 }
 
-
-export function activate(context: vscode.ExtensionContext) 
-{
-    //console.log('Congratulations, your extension "font-switcher" is now active!');
-
-    vscode.commands.registerCommand("extension.switchFont", () => selectFont(true));
-    vscode.commands.registerCommand("extension.setFontSize", () => selectFontSize(true));
-    vscode.commands.registerCommand("extension.switchTerminalFont", () => selectFont(false));
-    vscode.commands.registerCommand("extension.setTerminalFontSize", () => selectFontSize(false));
+export function activate(context: vscode.ExtensionContext): void {
+    context.subscriptions.push(
+        vscode.commands.registerCommand("extension.switchFont", () => selectFont("Editor")),
+        vscode.commands.registerCommand("extension.setFontSize", () => selectFontSize("Editor")),
+        vscode.commands.registerCommand("extension.switchTerminalFont", () => selectFont("Terminal")),
+        vscode.commands.registerCommand("extension.setTerminalFontSize", () => selectFontSize("Terminal"))
+    );
 }
-
 
 export function deactivate() { }
