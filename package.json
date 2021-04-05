@@ -5,59 +5,48 @@
 	"version": "4.0.0",
 	"publisher": "evan-buss",
 	"engines": {
-	  "vscode": "^1.55.0"
+		"vscode": "^1.55.0"
 	},
 	"author": {
-	  "name": "Evan Buss",
-	  "email": "evan.buss28@gmail.com",
-	  "url": "https://github.com/Evan-Buss"
+		"name": "Evan Buss",
+		"email": "evan.buss28@gmail.com",
+		"url": "https://github.com/Evan-Buss"
 	},
 	"license": "WTFPL",
 	"categories": [
-	  "Other"
+		"Other"
 	],
 	"repository": {
-	  "type": "git",
-	  "url": "https://github.com/Evan-Buss/font-switcher"
+		"type": "git",
+		"url": "https://github.com/Evan-Buss/font-switcher"
 	},
 	"icon": "icon.png",
 	"activationEvents": [
-	  "onCommand:extension.switchFont",
-	  "onCommand:extension.setFontSize",
-	  "onCommand:extension.switchTerminalFont",
-	  "onCommand:extension.setTerminalFontSize"
+		"onCommand:font-switcher.switchFont",
+		"onCommand:font-switcher.setFontSize",
+		"onCommand:font-switcher.switchTerminalFont",
+		"onCommand:font-switcher.setTerminalFontSize"
 	],
-	"main": "./out/extension",
+	"main": "./dist/extension",
 	"contributes": {
-	  "commands": [
-		{
-		  "command": "extension.switchFont",
-		  "title": "Switch Font"
-		},
-		{
-		  "command": "extension.setFontSize",
-		  "title": "Font Size"
-		},
-		{
-		  "command": "extension.switchTerminalFont",
-		  "title": "Switch Terminal Font"
-		},
-		{
-		  "command": "extension.setTerminalFontSize",
-		  "title": "Terminal Font Size"
-		}
-	  ],
-	  "configuration": {
-		"type": "object",
-		"title": "Font Switcher Configuration",
-		"properties": {
-		  "font-switcher.enableLivePreview": {
-			"type": "boolean",
-			"default": true,
-			"description": "Enable Font Switcher live preview when selecting font."
-		  }
-		}
-	  }
+		"commands": [
+			{
+				"command": "font-switcher.switchFont",
+				"title": "Switch Font"
+			},
+			{
+				"command": "font-switcher.setFontSize",
+				"title": "Font Size"
+			},
+			{
+				"command": "font-switcher.switchTerminalFont",
+				"title": "Switch Terminal Font"
+			},
+			{
+				"command": "font-switcher.setTerminalFontSize",
+				"title": "Terminal Font Size"
+			}
+		]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run package",

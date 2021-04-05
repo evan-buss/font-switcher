@@ -33,17 +33,12 @@ Make sure you have a few different fonts defined in your `settings.json` file un
 
 <img src="https://github.com/evan-buss/font-switcher/blob/master/screenshots/ChangeTerminalFontSize.gif?raw=true" alt="changing terminal font size" width="800">
 
-## Extension Settings
-
-This extension contributes the following settings:
-
-- `font-switcher.enableLivePreview`: Enable the live font preview functionality (enabled by default).
 
 ## Extension Commands
 
 This extension contributes the following commands:
 
-- `extension.switchFont`: Show a quickPick menu of the user defined editor font families.
-- `extension.setFontSize`: Show an input dialog for setting the font size
-- `extension.switchTerminalFont`: Show a quickPick menu of the user defined integrated terminal font families
-- `extension.setTerminalFontSize`: Show an input dialog for setting the terminal font size
+- `font-switcher.switchFont`: Show a quickPick menu of the user defined editor font families.
+- `font-switcher.setFontSize`: Show an input dialog for setting the font size
+- `font-switcher.switchTerminalFont`: Show a quickPick menu of the user defined integrated terminal font families
+- `font-switcher.setTerminalFontSize`: Show an input dialog for setting the terminal font size
