@@ -1,5 +1,5 @@
 "use strict";
-import * as vscode from "vscode";
+import { workspace, WorkspaceConfiguration } from "vscode";
 
 export type Target = "Editor" | "Terminal";
 
@@ -9,10 +9,9 @@ export function parseFontString(fontString: String): string[] {
 }
 
 // Get appropriate vscode config based on the Target.
-export function getConfig(target: Target): vscode.WorkspaceConfiguration {
+export function getConfig(target: Target): WorkspaceConfiguration {
     if (target === "Editor") {
-        return vscode.workspace.getConfiguration("editor");
+        return workspace.getConfiguration("editor");
     }
-    return vscode.workspace.getConfiguration("terminal.integrated");
+    return workspace.getConfiguration("terminal.integrated");
 }
-
