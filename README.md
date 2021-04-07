@@ -1,38 +1,33 @@
 # Font Switcher
 
-Font Switcher allows you to quickly switch between fonts configured in your `settings.json` configuration file.
+## Description
+
+If you are like me, you are very indecisive about your font choices. Font Switcher allows you to quickly configure your font settings.
 
 ## Features
 
-If you are like me, you are very indecisive about your font choices.
+- Add / remove / reorder editor and terminal fonts.
+    - Modifies the `editor.fontFamily` and `terminal.integrated.fontFamily` settings respectively.
+- Adjust size of editor and terminal fonts.
+    - Modifies the `editor.fontSize` and `terminal.integrated.fontSize` respectively.
 
-Font Switcher allows you to quickly switch your **editor** OR **terminal** font without having to manually reorder your `editor.fontFamily` or `terminal.integrated.fontFamily` setting. It also allows you to quickly change font size in the fly!
+## Commands
 
-## Usage
+### > Switch Font
 
-Make sure you have a few different fonts defined in your `settings.json` file under `editor.fontFamily` and `terminal.integrated.fontFamily`
+![live preview menu in action for editor font](screenshots/ChangeEditorFont.gif)
 
-![font settings](https://github.com/evan-buss/font-switcher/blob/master/screenshots/EditorFontFamily.png)
+### > Switch Terminal Font
 
-### Switch Font Family
-#### Switch Editor Font Family
+![live preview menu in action for terminal font](screenshots/ChangeTerminalFont.gif)
 
-<img src="https://github.com/evan-buss/font-switcher/blob/master/screenshots/ChangeEditorFont.gif?raw=true" alt="live preview menu in action for editor font" width="800">
+### > Font Size
 
-#### Switch Integrated Terminal Font Family
+![changing editor font size](screenshots/ChangeEditorFontSize.gif)
 
-<img src="https://github.com/evan-buss/font-switcher/blob/master/screenshots/ChangeTerminalFont.gif?raw=true" alt="live preview menu in action for terminal font" width="800">
+### > Terminal Font Size
 
-### Change Font Size
-
-#### Change Editor Font Size
-
-<img src="https://github.com/evan-buss/font-switcher/blob/master/screenshots/ChangeEditorFontSize.gif?raw=true" alt="changing editor font size" width="800">
-
-#### Change Integrated Terminal Font Size
-
-<img src="https://github.com/evan-buss/font-switcher/blob/master/screenshots/ChangeTerminalFontSize.gif?raw=true" alt="changing terminal font size" width="800">
-
+![changing terminal font size](screenshots/ChangeTerminalFontSize.gif)
 
 ## Extension Commands
 
