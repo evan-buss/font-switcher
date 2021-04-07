@@ -1,8 +1,6 @@
 # Font Switcher
 
-## Description
-
-If you are like me, you are very indecisive about your font choices. Font Switcher allows you to quickly configure your font settings.
+ Font Switcher allows you to quickly configure your font settings from the command palette.
 
 ## Features
 
