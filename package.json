@@ -2,7 +2,7 @@
   "name": "font-switcher",
   "displayName": "Font Switcher",
   "description": "Quickly configure your font settings.",
-  "version": "4.0.1",
+  "version": "4.1.0",
   "publisher": "evan-buss",
   "engines": {
     "vscode": "^1.22.0"
@@ -72,6 +72,7 @@
     "@typescript-eslint/eslint-plugin": "^4.14.1",
     "@typescript-eslint/parser": "^4.14.1",
     "eslint": "^7.19.0",
+    "font-list": "^1.2.14",
     "glob": "^7.1.6",
     "mocha": "^8.2.1",
     "ts-loader": "^8.0.14",

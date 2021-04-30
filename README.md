@@ -27,6 +27,11 @@
 
 ![changing terminal font size](screenshots/ChangeTerminalFontSize.gif)
 
+
+### > Preview and add all system fonts
+
+![preview system fonts](screenshots/systemFonts.gif)
+
 ## Extension Commands
 
 This extension contributes the following commands:
