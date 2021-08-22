@@ -21,7 +21,7 @@
     "customization",
     "vscode"
   ],
-  "extensionKind": ["ui", "workspace"]
+  "extensionKind": ["ui", "workspace"],
   "repository": {
     "type": "git",
     "url": "https://github.com/evan-buss/font-switcher"
