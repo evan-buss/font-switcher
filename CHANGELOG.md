@@ -1,5 +1,9 @@
 # Change Log
 
+## 4.0.1
+
+- Update `extensionKind` for use with remote extensions.
+
 ## 4.0.0
 
 - Add commands to change editor and terminal font sizes.
