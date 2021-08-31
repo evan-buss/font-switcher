@@ -25,8 +25,5 @@ jobs:
           git config user.name "Evan Buss"
           git config user.email "evan.buss28@gmail.com"
       - run: vsce publish -p ${{ secrets.EXTENSION_TOKEN }} ${{ github.event.inputs.semver }}
-      - run: |
-          git add package.json package-lock.json
-          git commit -m "Automated Release"
-          git push origin master
+      - run: git push origin master
 
