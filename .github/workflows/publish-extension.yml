@@ -20,10 +20,10 @@ jobs:
         with:
           node-version: 14
       - run: npm install -g vsce
-      - run: vsce publish -p ${{ secrets.EXTENSION_TOKEN }} ${{ github.event.inputs.semver }}
       - run: |
-          git config user.name "GitHub Action"
+          git config user.name "Evan Buss"
           git config user.email "evan.buss28@gmail.com"
+      - run: vsce publish -p ${{ secrets.EXTENSION_TOKEN }} ${{ github.event.inputs.semver }}
       - run: |
           git add package.json
           git commit -m "Automated Release"
