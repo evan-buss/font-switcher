@@ -20,6 +20,7 @@ jobs:
         with:
           node-version: 14
       - run: npm install -g vsce
+      - run: npm install
       - run: |
           git config user.name "Evan Buss"
           git config user.email "evan.buss28@gmail.com"
