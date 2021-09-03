@@ -2,7 +2,7 @@
   "name": "font-switcher",
   "displayName": "Font Switcher",
   "description": "Quickly configure your font settings.",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "publisher": "evan-buss",
   "engines": {
     "vscode": "^1.22.0"
@@ -21,7 +21,9 @@
     "customization",
     "vscode"
   ],
-  "extensionKind": ["ui"],
+  "extensionKind": [
+    "ui"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/evan-buss/font-switcher"
