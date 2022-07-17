@@ -7,9 +7,13 @@ on:
   workflow_dispatch:
     inputs:
       semver:
-        description: "SemVer VSCE Argument"
+        type: choice
+        description: "SemVer Level"
         required: true
-        default: "patch"
+        options:
+          - major
+          - minor
+          - patch
 
 jobs:
   build:
