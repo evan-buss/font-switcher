@@ -7,9 +7,9 @@ on:
   workflow_dispatch:
     inputs:
       semver:
-          description: 'SemVer VSCE Argument'     
-          required: true
-          default: 'patch'
+        description: "SemVer VSCE Argument"
+        required: true
+        default: "patch"
 
 jobs:
   build:
@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 16
       - run: npm install -g vsce
       - run: npm ci
       - run: |
@@ -26,4 +26,3 @@ jobs:
           git config user.email "evan.buss28@gmail.com"
       - run: vsce publish -p ${{ secrets.EXTENSION_TOKEN }} ${{ github.event.inputs.semver }}
       - run: git push origin master
-

@@ -1,5 +1,9 @@
 # Change Log
 
+## 4.1.0
+
+- Add support for [Web Extensions](https://code.visualstudio.com/api/extension-guides/web-extensions)
+
 ## 4.0.1
 
 - Update `extensionKind` for use with remote extensions.
