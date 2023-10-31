@@ -10,12 +10,22 @@ interface FontMenuItem extends QuickPickItem {
 export async function selectFont(target: Target): Promise<void> {
     const targetConfig = getConfig(target);
     const existingFonts = parseFontString(targetConfig.fontFamily).filter(x => !!x);
+    const fontLigatureConfig = getConfig('FontLigatures');
+    const originalFontFamily = targetConfig.get<string>('fontFamily');
+
+    const updateSettings = (family = originalFontFamily) => {
+        targetConfig.update("fontFamily", family, true);
+        const fontLigatures = fontLigatureConfig[family ?? '__default__'];
+        if (target === 'Editor') {
+            targetConfig.update('fontLigatures', fontLigatures, true);
+        }
+    };
 
     // Construct quick pick menu options.
     const menuItems: FontMenuItem[] = [
         ...existingFonts.map((font) => <FontMenuItem>{ label: font, type: "font" }),
         { alwaysShow: true, label: "$(add) Add Font", type: "button" },
-        { alwaysShow: true, label: "$(trash) Remove Font", type: "button" }
+        { alwaysShow: true, label: "$(trash) Remove Font", type: "button" },
     ];
 
     // Show the picker and display the currently selected font
@@ -23,23 +33,25 @@ export async function selectFont(target: Target): Promise<void> {
         placeHolder: `Select ${target} Font`,
         onDidSelectItem: (selection: FontMenuItem) => {
             // Show original settings if button. Otherwise show selected font.
-            targetConfig.update(
-                "fontFamily",
-                selection.type === "button" ? targetConfig.fontFamily : selection.label,
-                true
-            );
+            if (selection.type === "button") {
+                updateSettings();
+                return;
+            }
+            if (selection.type === "font") {
+                updateSettings(selection.label);
+            }
         },
     });
 
     // User cancelled, so apply the original settings
     if (!selection) {
-        targetConfig.update("fontFamily", targetConfig.fontFamily, true);
+        updateSettings();
         return;
     }
 
     if (selection.type === "button") {
         // Reset to default when user selects a button.
-        targetConfig.update("fontFamily", targetConfig.fontFamily, true);
+        updateSettings();
 
         if (selection.label === "$(add) Add Font") {
             await addFont(target, existingFonts);

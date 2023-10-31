@@ -8,6 +8,8 @@
     - Modifies the `editor.fontFamily` and `terminal.integrated.fontFamily` settings respectively.
 - Adjust size of editor and terminal fonts.
     - Modifies the `editor.fontSize` and `terminal.integrated.fontSize` respectively.
+- Automatically update `editor.fontLigature` for different fonts.
+    - In `settings.json`, set `font-switcher.fontLigatures` to an object with the font family as the key and the ligature setting as the value. For example: `{ "Fira Code": "'ss01'", "JetBrains Mono": "'ss19'", __default__: false }`. `__default__` is used when the font family is not found in the object.
 
 ## Commands
 
