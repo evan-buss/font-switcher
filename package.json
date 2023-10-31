@@ -55,7 +55,17 @@
         "command": "font-switcher.setTerminalFontSize",
         "title": "Terminal Font Size"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Font Switcher",
+      "properties": {
+        "font-switcher.fontLigatures": {
+          "type": "object",
+          "default": { "__default__": false },
+          "description": "Font liguature settings to apply for specific fonts."
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",

@@ -1,7 +1,7 @@
 "use strict";
 import { workspace, WorkspaceConfiguration } from "vscode";
 
-export type Target = "Editor" | "Terminal";
+export type Target = "Editor" | "Terminal" | "FontLigatures";
 
 // Parse a font string into an array.
 export function parseFontString(fontString: String): string[] {
@@ -13,5 +13,11 @@ export function getConfig(target: Target): WorkspaceConfiguration {
     if (target === "Editor") {
         return workspace.getConfiguration("editor");
     }
-    return workspace.getConfiguration("terminal.integrated");
+    if (target === "Terminal") {
+        return workspace.getConfiguration("terminal.integrated");
+    }
+    if (target === "FontLigatures") {
+        return workspace.getConfiguration("font-switcher.fontLigatures");
+    }
+    return workspace.getConfiguration();
 }
