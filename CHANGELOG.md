@@ -1,5 +1,10 @@
 # Change Log
 
+## 4.1.1
+
+- Migrate build tooling from webpack to esbuild while preserving extension behavior.
+- Refresh TypeScript/test/lint/publish infrastructure.
+
 ## 4.1.0
 
 - Add support for [Web Extensions](https://code.visualstudio.com/api/extension-guides/web-extensions)
