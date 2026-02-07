@@ -18,7 +18,7 @@
 - Add commands to change editor and terminal font sizes.
 - Add command to change terminal font family.
 - Add ability to add and remove fonts.
-- Remove `font-switcher.fontFamily`  and `font-switcher.enableLivePreview` settings.
+- Remove `font-switcher.fontFamily` and `font-switcher.enableLivePreview` settings.
   - Live preview is always enabled and the extension uses the default `editor.fontFamily` setting.
 
 ## 3.1.0

@@ -1,13 +1,13 @@
 # Font Switcher
 
- Font Switcher allows you to quickly configure your font settings from the command palette.
+Font Switcher allows you to quickly configure your font settings from the command palette.
 
 ## Features
 
 - Add / remove / reorder editor and terminal fonts.
-    - Modifies the `editor.fontFamily` and `terminal.integrated.fontFamily` settings respectively.
+  - Modifies the `editor.fontFamily` and `terminal.integrated.fontFamily` settings respectively.
 - Adjust size of editor and terminal fonts.
-    - Modifies the `editor.fontSize` and `terminal.integrated.fontSize` respectively.
+  - Modifies the `editor.fontSize` and `terminal.integrated.fontSize` respectively.
 
 ## Commands
 
