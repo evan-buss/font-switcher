@@ -1,5 +1,10 @@
 # Change Log
 
+## 4.1.1
+
+- Migrate build tooling from webpack to esbuild while preserving extension behavior.
+- Refresh TypeScript/test/lint/publish infrastructure.
+
 ## 4.1.0
 
 - Add support for [Web Extensions](https://code.visualstudio.com/api/extension-guides/web-extensions)
@@ -13,7 +18,7 @@
 - Add commands to change editor and terminal font sizes.
 - Add command to change terminal font family.
 - Add ability to add and remove fonts.
-- Remove `font-switcher.fontFamily`  and `font-switcher.enableLivePreview` settings.
+- Remove `font-switcher.fontFamily` and `font-switcher.enableLivePreview` settings.
   - Live preview is always enabled and the extension uses the default `editor.fontFamily` setting.
 
 ## 3.1.0
